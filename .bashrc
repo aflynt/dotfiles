@@ -36,6 +36,20 @@ export PATH=/opt/rh/rh-python36/root/usr/bin/:$PATH
 export PATH=~/bin:$PATH
 export PATH=.:$PATH
 
+################################################################################
+# Python for Computer science
+################################################################################
+export scripting=$HOME/scripting
+export MACHINE_TYPE=`uname`
+export SYSDIR=$scripting
+export PREFIX=$SYSDIR/$MACHINE_TYPE
+
+export PYTHONPATH=$scripting/src/tools:$scripting/scitools/lib
+export PATH=$scripting/src/tools:$scripting/scitools/bin:$PATH
+export PATH=$PREFIX/bin:$PATH
+
+export MANPATH=$PREFIX/man:$MANPATH
+export LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
 
 ################################################################################
 # PROMPT
@@ -68,7 +82,8 @@ alias src='source ~/.cshrc'
 alias lic='lmstat -S'
 
 alias rnn='renamer 1 2>/dev/null ; renamer'
-alias grep='grep -n --color'
+#alias grep='grep -n --color'
+alias grep='grep --color'
 
 ################################################################################
 # CD
@@ -90,6 +105,7 @@ alias rr59='cd /raid/linux59/flyntga'
 # VNC
 ################################################################################
 alias vnc8='vncviewer linux8:2'
+alias vnc3='vncviewer linux3:2'
 alias vnc4='vncviewer linux4:2'
 alias vnc21='vncviewer linux21:2'
 alias vnc22='vncviewer linux22:2'
