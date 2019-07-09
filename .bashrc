@@ -39,6 +39,8 @@ export PATH=.:$PATH
 ################################################################################
 # Python for Computer science
 ################################################################################
+export DIRB=/raid/linux4/flyntga/0_95957_Navy_TF/tmc6/inviscid/6b/data
+export DIRA=/raid/linux4/flyntga/0_95957_Navy_TF/tmc6/inviscid/free/data
 export scripting=$HOME/scripting
 export MACHINE_TYPE=`uname`
 export SYSDIR=$scripting
