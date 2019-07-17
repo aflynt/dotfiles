@@ -170,6 +170,7 @@ alias rl59='ssh linux59'
 ################################################################################
 alias gst='git status'
 alias gco='git commit'
+alias ga='git add .'
 alias glog='git log --pretty=format:"%h %s" --graph'
 
 
