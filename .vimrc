@@ -205,6 +205,4 @@ set splitright
 "ctrl + w |
 "ctrl + w =
 
-
-
 " ~/.vimrc ends here
