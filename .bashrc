@@ -183,5 +183,4 @@ alias gst='git status'
 alias gco='git commit'
 alias ga='git add .'
 alias glog='git log --pretty=format:"%h %s" --graph'
-
-
+alias gcred='git config credential.helper store'
