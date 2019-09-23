@@ -183,5 +183,7 @@ alias gst='git status'
 alias gco='git commit'
 alias ga='git add .'
 #/alias glog='git log --pretty=format:"%h %s" --graph --decorate --all'
-alias glog='git log --oneline --graph --decorate --all'
+#alias glog='git log --oneline --graph --decorate --all'
 alias gcred='git config credential.helper store'
+
+alias glog='git log --pretty=format:"%h %s" --graph'
