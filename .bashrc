@@ -3,6 +3,8 @@
 # VIM
 ################################################################################
 export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+export EMAIL=austin.flynt@jacobs.com
 
 ## USE VI IN BASH
 set -o vi
@@ -51,7 +53,9 @@ export PATH=$scripting/src/tools:$scripting/scitools/bin:$PATH
 export PATH=$PREFIX/bin:$PATH
 
 export MANPATH=$PREFIX/man:$MANPATH
-export LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
+export KRITADIR=/usr/lib64
+export PATH=$KRITADIR:$PATH
+export LD_LIBRARY_PATH=$PREFIX/lib:$KRITADIR:$LD_LIBRARY_PATH
 
 alias python='python3'
 
@@ -88,7 +92,7 @@ alias rm='rm -i'
 alias rmf='rm -f'
 alias h='history'
 alias vi='vim'
-alias rl='rlogin'
+alias rl='ssh'
 alias freeg='free -g'
 alias open='okular'
 alias src='source ~/.cshrc'
@@ -141,6 +145,7 @@ alias lls='ls --color -hl'
 alias la='ls --color -al'
 alias ll='ls --color -ltrah'
 alias ls='ls --color'
+alias lsp='ls --color=none' #'plain ls', no color
 
 ################################################################################
 # SSH
@@ -163,6 +168,7 @@ alias s59='ssh linux59'
 
 alias rl3='ssh linux3'
 alias rl4='ssh linux4'
+alias rl40='ssh linux40'
 alias rl14='ssh linux14'
 alias rl15='ssh linux15'
 alias rl18='ssh linux18'
@@ -183,7 +189,7 @@ alias gst='git status'
 alias gco='git commit'
 alias ga='git add .'
 #/alias glog='git log --pretty=format:"%h %s" --graph --decorate --all'
-#alias glog='git log --oneline --graph --decorate --all'
+alias glog='git log --oneline --graph --decorate --all'
 alias gcred='git config credential.helper store'
 
 alias glog='git log --pretty=format:"%h %s" --graph'
