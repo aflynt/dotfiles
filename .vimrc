@@ -15,6 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'thoughtstream/Damian-Conway-s-Vim-Setup'
 Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -138,8 +139,9 @@ set ai
 set si
 set expandtab
 set scrolloff=10
-set list
-set listchars=tab:>-,trail:-
+"set list
+"set listchars=tab:>-,trail:-
+"set listchars=trail:-
 
 
 nnoremap ,wq :wq<CR>
@@ -180,6 +182,7 @@ map <F3> ggVGg?
 let @p = ':put =map(range(1,10), ''printf(''''%02d'''', v:val)'')'
 let @c = 'k^/"v^yjPA"k0i#j'
 let @n = '"ddwbkw"aywjb"ap'
+let @d = '80lbEa'   " cut lines off at ~80chars
 
 
 "nnoremap <C-H> <C-W><C-H>
@@ -199,6 +202,7 @@ let g:tmux_navigator_save_on_switch = 2
 
 set splitbelow
 set splitright
+
 
 " max out height/ width or equalize
 "ctrl + w _
