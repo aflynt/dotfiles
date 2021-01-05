@@ -78,6 +78,128 @@ function! SKEL_spec()
 	setf spec
 endfunction
 autocmd BufNewFile	*.spec	call SKEL_spec()
+
+" Vimscript file settings ------{{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+augroup filetype_html
+  autocmd!
+  autocmd FileType html setlocal foldmethod=manual
+  autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+  "autocmd FileType html nnoremap <buffer> <leader>f Vatzf
+augroup END
+" }}}
+" leader c == comment --------------{{{
+autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
+autocmd FileType c          nnoremap <buffer> <leader>c I//<esc>
+autocmd FileType cpp        nnoremap <buffer> <leader>c I//<esc>
+autocmd FileType python     nnoremap <buffer> <leader>c I#<esc>
+autocmd FileType html       nnoremap <buffer> <leader>c I<!--A-->0
+autocmd FileType css        nnoremap <buffer> <leader>c I/*A*/0
+
+autocmd FileType python     iabbrev  <buffer>  iff if:<left>
+autocmd FileType javascript iabbrev  <buffer>  iff if ()<left>
+autocmd FileType c          iabbrev  <buffer>  iff if ()<left>
+autocmd FileType cpp        iabbrev  <buffer>  iff if ()<left>
+" }}}
+
+"edit vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sm :set fdm=marker<cr>
+
+"chop linewidths to ~80 chars
+nnoremap <leader>xx 80lea
+
+
+"insert checkmark
+nnoremap <leader>ok 0/[
+lct]OK0
+nnoremap <leader>ng 0/[
+lct]XX0
+nnoremap <leader>td 0/[
+lct]<Space>0
+nnoremap <leader>mm 0i- [ ] 0
+inoremap ,mm - [ ]
+
+"remap escaping insert mode
+inoremap jk <esc>
+inoremap <Leader>e  <esc>
+inoremap <Leader><Leader>  <esc>
+nnoremap <Leader><Leader>  <esc>
+
+" remap window movement
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+nnoremap <c-k> <c-w>k
+nnoremap <c-j> <c-w>j
+
+"window widening
+nnoremap <leader>s <
+nnoremap <leader>b >
+
+"open tab
+nnoremap <leader>tn :tabnew<cr>
+
+"change dir
+nnoremap <leader>cd :cd %:h<cr>
+
+" set foldmethod marker
+nnoremap <leader>fm :set fdm=marker<cr>
+
+autocmd BufNewFile * :write
+autocmd BufWritePre * %s/\s\+$//e
+
+" grepOperator --------------{{{
+nnoremap <leader>g :set operatorfunc=GrepOperator<cr>g@
+vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
+
+function! GrepOperator(type)
+    if a:type ==# 'v'
+        normal! `<v`>y
+    elseif a:type ==# 'char'
+        normal! `[v`]y
+    else
+        return
+    endif
+    let fname = @%
+    let myfdir  = expand('%:p:h')
+
+    "silent execute "grep! -R " . shellescape(@@) . " ."
+    "silent execute "grep! " . " /c:" . shellescape(@@) . " \\" . myfdir . "\\" . fname
+    silent execute "grep! " . " /c:" . shellescape(@@) . " " . myfdir . "\\" . fname
+    copen
+endfunction
+"---------------}}}
+"-- quick fix toggle {{{
+nnoremap <leader>q :call QuickfixToggle()<cr>
+
+let g:quickfix_is_open = 0
+
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+"---------------}}}
+
+" file explorer
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+""""""""""""""""""" OLD STUFF """""""""""""""""""""""""
 " filetypes
 filetype plugin on
 filetype indent on
@@ -155,7 +277,8 @@ set foldmethod=syntax
 " colors and fonts
 " """"""""""""""""
 set background=dark
-colorscheme desert
+"colorscheme desert
+colorscheme darkblue
 
 " Pair matching
 inoremap {<CR> {<CR>}<Esc>0
@@ -170,17 +293,16 @@ inoremap [[  []<Left>
 inoremap ''  ''<Left>
 
 " Map Esc key
-inoremap <Leader>e <esc>
-inoremap <Leader><Leader> <esc>
-nnoremap <Leader><Leader> <esc>
 
 ab teh the
 
 map <F3> ggVGg?
 
 
-let @p = ':put =map(range(1,10), ''printf(''''%02d'''', v:val)'')'
-let @c = 'k^/"v^yjPA"k0i#j'
+let @p = ':put =map(range(1,10), ''printf(''''%02d'''', v:val)'')
+'
+let @c = 'k^/"
+v^yjPA"k0i#j'
 let @n = '"ddwbkw"aywjb"ap'
 let @d = '80lbEa'   " cut lines off at ~80chars
 
