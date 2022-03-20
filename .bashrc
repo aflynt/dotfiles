@@ -16,7 +16,7 @@ test -s ~/.alias && . ~/.alias || true
 # CCM+
 ################################################################################
 #PATH=/raid/linux8/apps/starccm/12.04.010-R8/STAR-CCM+12.04.010-R8/star/bin:$PATH
-PATH=/raid/linux8/apps/starccm/14.02.012-R8/STAR-CCM+14.02.012-R8/star/bin:$PATH
+#PATH=/raid/linux8/apps/starccm/14.02.012-R8/STAR-CCM+14.02.012-R8/star/bin:$PATH
 
 export CDLMD_LICENSE_FILE=1999@linux9
 
@@ -32,11 +32,14 @@ alias s2019='/raid/linux8/apps/starccm/14.02.012-R8/STAR-CCM+14.02.012-R8/star/b
 ################################################################################
 # PATH
 ################################################################################
-export PATH=/opt/rh/rh-python36/root/usr/bin/:$PATH
+#export PATH=/opt/rh/rh-python36/root/usr/bin/:$PATH
+
+export QDIR=/opt/Qt/Tools/QtCreator/bin/qtcreator
 
 # ADD MY CMDS TO PATH
 export PATH=~/bin:$PATH
 export PATH=.:$PATH
+export PATH=$QDIR:$PATH
 
 ################################################################################
 # Python for Computer science
@@ -48,16 +51,20 @@ export MACHINE_TYPE=`uname`
 export SYSDIR=$scripting
 export PREFIX=$SYSDIR/$MACHINE_TYPE
 
-export PYTHONPATH=$scripting/src/tools:$scripting/scitools/lib
-export PATH=$scripting/src/tools:$scripting/scitools/bin:$PATH
-export PATH=$PREFIX/bin:$PATH
+export CMAKE_PREFIX_PATH=/opt/Qt/
+
+#export PYTHONPATH=$scripting/src/tools:$scripting/scitools/lib
+#export PATH=$scripting/src/tools:$scripting/scitools/bin:$PATH
+#export PATH=$PREFIX/bin:$PATH
+export PATH=$PATH:/home/aflynt/.local/bin
+export PATH=$PATH:/opt/Qt/Tools/QtCreator/bin
 
 export MANPATH=$PREFIX/man:$MANPATH
 export KRITADIR=/usr/lib64
 export PATH=$KRITADIR:$PATH
 export LD_LIBRARY_PATH=$PREFIX/lib:$KRITADIR:$LD_LIBRARY_PATH
 
-alias python='python3'
+#alias python='python3'
 
 ################################################################################
 # PROMPT
@@ -193,3 +200,5 @@ alias glog='git log --oneline --graph --decorate --all'
 alias gcred='git config credential.helper store'
 
 alias glog='git log --pretty=format:"%h %s" --graph'
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/clion-2021.3.2/bin:$PATH"
