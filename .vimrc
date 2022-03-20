@@ -1,6 +1,8 @@
 " ~/.vimrc (configuration file for vim only)
 set nocompatible
 filetype off
+let mapleader = ","
+let g:maplearder = ","
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -16,9 +18,10 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'thoughtstream/Damian-Conway-s-Vim-Setup'
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
+Plugin 'aflynt/vim-dichromatic'
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -112,16 +115,12 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sm :set fdm=marker<cr>
 
 "chop linewidths to ~80 chars
-nnoremap <leader>xx 80lea
-
+nnoremap <leader>xx 80lea
 
 "insert checkmark
-nnoremap <leader>ok 0/[
-lct]OK0
-nnoremap <leader>ng 0/[
-lct]XX0
-nnoremap <leader>td 0/[
-lct]<Space>0
+nnoremap <leader>ok 0/[lct]OK0
+nnoremap <leader>ng 0/[lct]XX0
+nnoremap <leader>td 0/[lct]<Space>0
 nnoremap <leader>mm 0i- [ ] 0
 inoremap ,mm - [ ]
 
@@ -206,8 +205,6 @@ filetype indent on
 
 set autoread
 
-let mapleader = ","
-let g:maplearder = ","
 
 
 "fast saving
@@ -217,7 +214,7 @@ nnoremap <silent> <leader>s :set spell!<CR>
 
 set spelllang=en_us
 
-:set noswapfile
+set noswapfile
 
 " VIM UI
 set wildmenu
@@ -299,11 +296,7 @@ ab teh the
 map <F3> ggVGg?
 
 
-let @p = ':put =map(range(1,10), ''printf(''''%02d'''', v:val)'')
-'
-let @c = 'k^/"
-v^yjPA"k0i#j'
-let @n = '"ddwbkw"aywjb"ap'
+let @p = ':put =map(range(1,10), ''printf(''''%02d'''', v:val)'')'
 let @d = '80lbEa'   " cut lines off at ~80chars
 
 
@@ -325,6 +318,8 @@ let g:tmux_navigator_save_on_switch = 2
 set splitbelow
 set splitright
 
+set nostartofline
+set ve=block
 
 " max out height/ width or equalize
 "ctrl + w _
